@@ -1,6 +1,6 @@
 ---
 name: agentic-claims
-description: Write and check claim records (claims/*.md) — falsifiable claims that a named bad thing cannot happen, argued from explicit axioms and checked through a two-role protocol (blind falsifier + argument auditor). Use when the user asks to prove or check a guarantee, assess a risk, write or re-run a claim record, or when a change touches code a claim record depends on.
+description: Write and check claim records (claims/*.md) — falsifiable claims that a named bad thing cannot happen, argued from explicit axioms and checked by an independent argument checker. Use when the user asks to prove or check a guarantee, assess a risk, write or re-run a claim record, or when a change touches code a claim record depends on.
 ---
 
 # Claims
@@ -8,8 +8,8 @@ description: Write and check claim records (claims/*.md) — falsifiable claims 
 A claim record argues, from the current code, that one concretely feared
 bad thing cannot happen. It decomposes the claim into lemmas over explicit
 axioms, like a proof; it must be able to fail, like a test. Records are
-checked by falsification — attempting to construct a counterexample —
-never by re-reading the argument sympathetically.
+checked by hostile review of the argument, never by re-reading it
+sympathetically.
 
 ## Records
 
@@ -19,19 +19,15 @@ record opens with a `Scope:` line naming the code globs its lemmas read;
 staleness detection is diff ∩ scope. There
 is no further classification — safety, liveness, completeness, and
 confinement properties all use the same form; what distinguishes them is
-stated inside the record (see the falsification procedure). A record
-contains, in order:
+the exact violation and adversary model stated in the claim. A record contains,
+in order:
 
 1. **Claim** — what can never happen, with its adversary model.
 2. **Axioms** — the trusted, unchecked base.
 3. **Argument** — lemmas, each labeled with its enforcement rung.
 4. **Residual windows** — accepted executions outside the claim.
 5. **Weakest links** — lemmas ranked by rung.
-6. **Falsification procedure** — self-contained; runnable from the claim
-   and axioms alone, without the argument. It names what a counterexample
-   is for this property: a violating trace, a stuck state, a missing
-   element in an enumeration, or a leaking channel.
-7. **Verdict** — dated, gated on the two-role check.
+6. **Verdict** — dated, gated on the argument check.
 
 ### Composing records
 
@@ -53,14 +49,11 @@ An import is a checked lemma, not an axiom and not shorthand for trusting a
   and separately label any local case split or glue (`enum`, `code`, and so
   on); mechanisms inside the leaf are not relabeled as if the parent checked
   them directly;
-- the parent blind packet contains its own claim/axioms/procedure plus each
-  imported leaf's claim, axioms, and falsification procedure—never leaf
-  arguments. Leaf two-role checks run independently; the parent blind role
-  attacks exhaustiveness, interface identity, axiom compatibility, and paths
-  between or outside the leaves;
-- the parent auditor reads all imported records and regenerates both the glue
-  and each claimed interface. The parent cannot pass until every leaf and the
-  composition have passed their respective two-role checks.
+- the composition checker reads all imported records, attacks exhaustiveness,
+  interface identity, axiom compatibility, and paths between or outside the
+  leaves, and regenerates both the glue and each claimed interface. The parent
+  cannot pass until every leaf and the composition have passed their respective
+  argument checks.
 
 Changing an imported record or anything in its effective scope stales the
 parent transitively. This recursive staleness rule is part of the import
@@ -92,7 +85,7 @@ or with risk scores or likelihood estimates.
 - State where the guarantee bottoms out (hash hardness, signature
   unforgeability, single-instance locks, child-process behavior).
 - The common defect is the smuggled premise: a protocol, crypto, or
-  deployment fact the argument uses and never states. The auditor hunts
+  deployment fact the argument uses and never states. The checker hunts
   these.
 
 ## Rungs
@@ -124,34 +117,23 @@ must say which.
   surfaced to the component owner; an existing one cites the ruling that
   accepted it.
 
-## The two-role check
+## The argument check
 
-Both roles run as separate agents before any verdict:
-
-- **Blind falsifier**: workspace forked from a revision without the
-  record; receives only the claim, axioms, and falsification procedure;
-  must not read `claims/`. It regenerates the enumerations, derives each
-  site's guards and reachability, and attempts counterexample traces. A
-  pass is credible only with the attempted counterexamples and what
-  blocked each.
-- **Argument auditor**: receives the record; attacks the argument, not the
-  conclusion — misread guards, lock scopes, and orderings at line level;
-  non-exhaustive case splits; smuggled assumptions; enumerations
-  regenerated against the record's lists; residual filing; axiom
-  sufficiency. Point it at the specific joints a hostile reviewer would
-  attack.
-
-The falsifier catches bugs the argument missed; the auditor catches true
-conclusions reached through invalid arguments. Fold both reports into
-the record. The author's own derivation alone never yields a pass.
+An independent argument checker reviews the record before any verdict. It
+attacks the argument, not the conclusion — misread guards, lock scopes, and
+orderings at line level; non-exhaustive case splits; smuggled assumptions;
+enumerations regenerated against the record's lists; residual filing; axiom
+sufficiency. Point it at the specific joints a hostile reviewer would attack
+and fold its report into the record. The author's own derivation alone never
+yields a pass.
 
 ## Verdicts
 
 The verdict line carries pass / falsified / provisional, the date, and
-what each role found, including repairs the check forced. Provisional
-means the two-role check has not completed. Falsified names the
+what the checker found, including repairs the check forced. Provisional
+means the argument check has not completed. Falsified names the
 counterexample and stands until the code changes and the argument is
-re-derived. A pass means "survived falsification as of this date",
+re-derived. A pass means "survived argument checking as of this date",
 never "cannot happen".
 
 ## Re-checking on code changes
@@ -176,7 +158,7 @@ PR, the same rule as spec/code sync: regenerate stale `enum` lemmas,
 re-read stale `code` lemmas, update the verdict date — or, if a lemma no
 longer holds, the record is falsified in that PR and says so. A PR that
 invalidates a lemma and leaves the record silently green is a bug. The
-full two-role check re-runs only when the claim or the argument's
+full argument check re-runs only when the claim or the argument's
 structure changes, not for lemma-local re-checks.
 
 Staleness is promotion pressure: a lemma that keeps going stale should
@@ -190,7 +172,7 @@ on changes until scope-diffing demonstrably needs tooling.
 
 - Derive from code, never from memory; re-derivation is where claims
   gain precision.
-- Before spawning the roles, run your own falsification: enumerate all
+- Before invoking the checker, try to falsify your argument: enumerate all
   writers, all exit channels (an RPC response is an exit channel), all
   interleavings the lemmas assume away.
 - When a check exposes a failure mode this skill did not anticipate,
