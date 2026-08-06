@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MIT
 {
   description = "maan2003's public agent skills";
 

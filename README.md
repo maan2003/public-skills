@@ -52,3 +52,10 @@ outputs =
 ```
 
 The same command can be used from any other dev-shell `shellHook`.
+
+## License
+
+Skill instructions and documentation are licensed under
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Source code,
+executable scripts, and Nix files are licensed under the
+[MIT License](LICENSES/MIT.txt). See [LICENSE.md](LICENSE.md) for details.
