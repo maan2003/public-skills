@@ -17,7 +17,7 @@ engineer the absolute path to exactly one of them:
 | Role | Path | Use |
 |---|---|---|
 | Scout | `scout/SKILL.md` | triage the component, rank modules, route roles |
-| Scanner | `scanner/SKILL.md` | per-module cold read → record (self-spawns the checker) |
+| Scanner | `scanner/SKILL.md` | per-module cold read → record |
 | Checker | `checker/SKILL.md` | hostile check of a record; attacks acquittals |
 | Burden | `burden/SKILL.md` | inverted-burden sweep of decision-dense modules |
 | Coroner | `coroner/SKILL.md` | future-incident postmortems on lifecycle-heavy modules |
@@ -31,6 +31,29 @@ the bench are in `PROTOCOL.md` beside this file — read it before
 starting. You never modify production code; findings become fixes only as
 separate human-authorized work.
 
+## Budget
+
+An audit you cannot supervise is worse than a smaller one. Standing
+limits, raisable only by the human at the Phase 0/1 conversation:
+
+- **Total spawns: 12 per run.** Typical shape: scout, four or five
+  scanner/checker pairs, two specialists, defense.
+- **Live agents: 3 at once.** Work in waves, and do not start a wave
+  until the previous wave's results are in and accounted for. A spawn
+  whose result never arrives is an incident to chase, not noise to
+  absorb — with three live agents you will notice; with thirty you will
+  not.
+- **One-level tree.** You spawn every agent yourself, including
+  checkers; no role spawns sub-agents under this system. Scanners
+  deliver their record unchecked and you spawn the checker on it —
+  blinding is unchanged, since the checker only ever received the record
+  path anyway.
+- **The ranking is a queue, not a coverage obligation.** When budget
+  runs out, unscanned modules go in the index as `unscanned` leads.
+  Coverage comes from re-runs inheriting the queue, not from one big
+  run; a small audit that lands beats a large one that has to be
+  shepherded.
+
 ## Phase 0 — scope
 
 Confirm with the human in one message: the component's root paths,
@@ -38,28 +61,35 @@ anything explicitly out of scope, and where its governed specs live.
 
 ## Phase 1 — triage
 
-Spawn the scout on the component. Present the human its ranked schedule
-and your plan (which modules get the pair, which specialists go where,
-expected agent count), then proceed — adjust if they redirect, don't
-block waiting. Treat scout "clean" as deprioritized, never as acquitted.
+Spawn the scout on the component. If its triage exceeds roughly 15
+modules, the component is too big for one run: return to the human with
+a proposed split and audit one piece. Present the human its ranked
+schedule and your plan (which modules get the pair, which specialists go
+where, and the spawn count against budget), then proceed — adjust if
+they redirect, don't block waiting. Treat scout "clean" as
+deprioritized, never as acquitted.
 
 ## Phase 2 — core pass
 
-For each module worth reading, work down the ranking: spawn one scanner;
-it writes `reviews/stupid-code/<module>.md` in its workspace and
-self-spawns its checker, which writes `<module>-checked.md`. The checked
-reports are the precision backbone; nothing from an unchecked scanner is
-ever presented to the human.
+Work down the ranking within budget: spawn one scanner per module,
+telling it to deliver its record unchecked; it writes
+`reviews/stupid-code/<module>.md`. When the record lands, spawn its
+checker on it, which writes `<module>-checked.md`. The checked reports
+are the precision backbone; nothing from an unchecked scanner is ever
+presented to the human.
 
 ## Phase 3 — routed specialists
 
-Field per the scout's routing and these standing assignments: burden on
-the 2–3 decision-densest modules (its convictions go to Phase 4, never
-directly into issues); coroner on schedulers, supervisors, recovery
-paths, and anything moving money or irreplaceable data; policy court
-once per governed feature; historian once for the component; courier
-once for the component, after the module scans, with 4–6 travelers
-biased toward consequence.
+Field **at most two specialists per run**, chosen by fit from the
+scout's routing; the rest of the bench rotates in across re-runs, since
+each unfielded role's catch-class is simply not covered this run — say
+so in the close. Fit guide: burden for decision-dense modules (its
+convictions go to Phase 4, never directly into issues); coroner where
+lifecycle, recovery, money, or irreplaceable data live; policy court
+where governed specs dominate; courier once per component, after the
+module scans, with 4–6 travelers biased toward consequence; historian
+once per component. "Once per component" means across the component's
+audit history, not per run.
 
 **Blinding is yours to enforce**: every spawned engineer gets scope and
 its one skill path — never other roles' outputs, never existing records
@@ -129,6 +159,7 @@ stream individual findings as they arrive.
 
 If `reviews/stupid-code/` already has records and issues: diff since
 their dates, re-scan only modules whose scope changed (their acquittals
-are stale), inherit unresolved leads, and update issue statuses rather
-than re-litigating ruled ones. A ruled or accepted-residual issue is
+are stale), work the inherited `unscanned` queue and unresolved leads
+before anything else, field the bench roles prior runs skipped, and
+update issue statuses rather than re-litigating ruled ones. A ruled or accepted-residual issue is
 reopened only by new evidence at its cited sites.

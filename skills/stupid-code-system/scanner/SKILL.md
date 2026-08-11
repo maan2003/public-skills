@@ -209,9 +209,11 @@ The record lives in the audited repo itself: write it to
 with the code it judges — a later change inside its scope stales its
 acquittals, and the next scan inherits its leads instead of starting cold.
 
-When you can spawn engineers, run the protocol yourself: after writing the
-record, spawn a fresh engineer with the checker skill (`../checker/SKILL.md`
-relative to this skill's directory), giving it only the record path, the
-module scope, and the repo path — none of your reasoning beyond the
-record. Deliver its checked report together with your record path. If
-you cannot spawn, deliver the record and say it is unchecked.
+If you were spawned by an audit lead, deliver the record path and stop:
+the lead spawns the checker, and your unwritten reasoning must not reach
+it. Only when running standalone — no lead, and you can spawn
+engineers — run the protocol yourself: spawn a fresh engineer with the
+checker skill (`../checker/SKILL.md` relative to this skill's
+directory), giving it only the record path, the module scope, and the
+repo path. Deliver its checked report together with your record path.
+If you cannot spawn either, deliver the record and say it is unchecked.
