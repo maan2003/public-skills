@@ -27,11 +27,9 @@ human's call.
    agents, ranked. The scanner's own report is testimony and is not
    published on its own.
 
-The check must not inherit the scanner's unwritten reasoning: whoever
-spawns the checker passes only the record file, scope, and repo path.
-Under an audit lead that is the lead — a one-level spawn tree keeps
-every agent visible to one supervisor. A scanner running standalone,
-with no lead, spawns its own checker instead.
+The protocol is self-driving: the scanner spawns its own checker, passing
+only the record file, scope, and repo path — the check must not inherit
+the scanner's unwritten reasoning.
 
 ## Lifecycle
 
