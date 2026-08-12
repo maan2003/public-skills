@@ -52,22 +52,65 @@ other:
    Specialists mail you only their record path, counts, and one
    headline. Reports travel as files, never as message bodies.
 
-## Records
+## Records are transport, issues are the deliverable
 
-- Records live in `reviews/underwriting/` in the audited repo and
-  version with the code they judge; a later change inside a record's
-  scope stales its acquittals, and a re-run inherits its leads. Prior
-  `reviews/stupid-code/` records are admissible inherited leads.
+Raw role records exist so reports survive compaction and never travel
+as message bodies — they are transport, not the product. Each agent
+writes its record under `reviews/underwriting/` in its own workspace:
+
 - **Write-once, distinct paths.** Each agent writes to a path carrying
   its role and attempt; a replacement agent never reuses its
   predecessor's output path. A presumed-dead agent that finishes late
   must not be able to silently overwrite a record already synthesized
   from.
+- Raw records are not committed to the audited repo's history and may
+  be discarded after synthesis. Anything an issue needs must be
+  restated in the issue; an issue that cites a raw record instead of
+  the code is incomplete.
+
+What versions with the code is `reviews/underwriting/issues/`: one file
+per surviving conviction, `issues/<slug>.md`, in plain language for a
+human reviewer, plus a `README.md` index ranking them by cost. The
+index also carries the verdict's coverage and exclusions sections, so
+what was examined — and what wasn't — survives alongside the issues.
+Prior `reviews/stupid-code/` issues and records are admissible
+inherited leads.
+
+Each issue file:
+
+```markdown
+# <plain-language title stating the harm>
+
+- **Status:** open | contested | ruled(<ruling>) | accepted-residual | fixed
+- **Tier:** blinded convergence | checked | testimony
+- **Level:** code | policy (cite the spec clause if policy)
+- **Found by:** <roles that independently reached it>
+- **Where:** file:line (every site)
+
+**What happens:** the mechanism, concretely, in two to four sentences.
+**The result:** the real cost over the actual operating regime, with
+the arithmetic when there is any.
+**Failed defense:** the best defense and why it fails.
+**Fix direction:** the sensible version at its natural size.
+```
+
+Admission rule: a conviction becomes an issue only if it survived the
+checker, or independent blinded roles converged on it, or defense
+verified it while failing to reduce it. Everything else goes in the
+index under "leads", one line each — including plain bugs the run
+turned up (out of scope for underwriting, never silently dropped).
+
+Re-runs: a later change at an issue's cited sites reopens it; ruled and
+accepted-residual issues are not re-litigated without new evidence at
+those sites. Acquittals recorded in the index go stale when their scope
+changes, and a re-run inherits unresolved leads instead of starting
+cold.
 
 ## The verdict
 
-Synthesize from disk into one message with three sections, all
-mandatory:
+Write the issue files and index first, then synthesize into one message
+with three sections, all mandatory — each conviction pointing at its
+issue file:
 
 - **Convictions**, ranked by real cost over the actual operating
   regime, each labeled with its evidence tier: *blinded convergence*
