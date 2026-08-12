@@ -133,7 +133,10 @@ Verdict trail: scanner → checker (upheld/overturned) → defense (motion)
 
 Admission rule: a finding becomes an issue only if it survived the
 checker, or two roles converged on it independently, or the defense
-verified it while failing to reduce it. Everything else goes in the index
+verified it while failing to reduce it. Deduplication merges findings;
+it never drops them: every conviction in a checked report must be
+traceable to an issue or a named lead in the index — reconcile the
+index against the checked reports before closing. Everything else goes in the index
 under "leads" with one line each — including plain *bugs* the audit
 turned up (out of scope for stupidity, never silently dropped; flag them
 for the repo's bug-tracking convention).
