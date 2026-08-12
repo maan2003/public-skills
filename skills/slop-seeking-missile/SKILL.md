@@ -26,7 +26,7 @@ One module, named by the human. A small crew, all blinded from each
 other:
 
 1. **The pair.** Spawn one engineer with the scanner skill
-   (`../stupid-code-system/scanner/SKILL.md`) on the module. It writes
+   (`scanner/SKILL.md`) on the module. It writes
    its record in the audited repo and self-spawns its hostile checker.
    The checked report is the backbone; nothing unchecked is ever
    presented as checked.
@@ -34,14 +34,14 @@ other:
    catch-class fit; each gets only the module scope and its one skill
    path — never the pair's record, never each other's output, never
    your reasoning:
-   - `../stupid-code-system/burden/SKILL.md` — decision-dense code
-   - `../stupid-code-system/coroner/SKILL.md` — lifecycle, recovery,
+   - `burden/SKILL.md` — decision-dense code
+   - `coroner/SKILL.md` — lifecycle, recovery,
      money, irreplaceable data
-   - `../stupid-code-system/policy-court/SKILL.md` — spec-governed
+   - `policy-court/SKILL.md` — spec-governed
      behavior
-   - `../stupid-code-system/courier/SKILL.md` — data crossing the
+   - `courier/SKILL.md` — data crossing the
      module's boundaries end to end
-   - `../stupid-code-system/historian/SKILL.md` — reverted or laundered
+   - `historian/SKILL.md` — reverted or laundered
      decisions
    - `ops-drill/SKILL.md` (here) — paper-operate the module for a year:
      restarts, outages, hostile traffic, storage loss. Its brief is a
@@ -85,7 +85,7 @@ mandatory:
   because its conservation arithmetic read as safety.
 
 Round 2 on the survivors and weakest acquittals is the default offer:
-field `../stupid-code-system/defense/SKILL.md` against the convictions,
+field `defense/SKILL.md` against the convictions,
 or a fresh role against the survivors. Iterated depth on one site is
 where the best verdicts have historically come from.
 
