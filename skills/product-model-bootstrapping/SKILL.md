@@ -23,7 +23,7 @@ Survey without side effects on anything shared. Run the product with a fresh, pr
 
 ## product.md
 
-Write the user section from what the product shows about its user and from the owner's words. Put the owner's values in the skill's form, one test each, and keep their meaning; rephrase, do not reinterpret. Add a value only when the built product clearly embodies it, place it after the owner's values, and name each added value in the report so the owner can veto it. Write non-goals only for things the product visibly refuses, such as a feature it has no place for.
+Write the user section from what the product shows about its user and from the owner's words. Write the Day from the owner's words only, in the owner's order; when the owner has not given it, list what the built product's jobs serve, unordered, and ask the owner for the order in the report. Put the owner's values in the skill's form, one test each, and keep their meaning; rephrase, do not reinterpret. Add a value only when the built product clearly embodies it, place it after the owner's values, and name each added value in the report so the owner can veto it. Write non-goals only for things the product visibly refuses, such as a feature it has no place for.
 
 ## Modules
 

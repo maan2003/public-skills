@@ -21,7 +21,7 @@ A module starts with `# <module>` and a sentence or two on what the area is for.
 Declarations and their labels:
 
 - `concept <Name>`: one thing the user knows by name. `purpose:` one sentence of benefit to the user. `principle:` a short scenario that shows the purpose being met. `sees:` what the user can see of it, in priority order: the first items are what a list row shows, the rest need the thing open. `has:` the concepts nested in it, one per line, each marked `one` or `many`, optional. `does:` a list of actions, one per line, as `<action> <key or gesture>: what happens`; the key is optional.
-- `job <Title>`: one reason the user comes. `when:` the situation. `want:` what they want to do. `so that:` the outcome. `flow:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional.
+- `job <Title>`: one reason the user comes. `day:` the line of `product.md`'s Day it serves, by its bold name. `when:` the situation. `want:` what they want to do. `so that:` the outcome. `flow:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional.
 - `screen <Name>`: what the user sees at once. `shows:` the concepts on it. `starts:` the jobs that begin there.
 - `rule <name>`: how two or more concepts act together, in one `when ... then ...` sentence. A rule is where one action in one concept has an effect in another.
 
@@ -77,13 +77,14 @@ A concept must be something the user names, or would need a word for. A job must
 
 ## product.md
 
-One file per product, with three sections.
+One file per product, with four sections.
 
-- `## User`: who they are, their situation, the devices, how often and for how long they visit, and what they remember between visits.
+- `## User`: who they are, their situation, the devices, how often and for how long they are in the product, and what they remember between visits.
+- `## Day`: what the user does in the product, as a numbered list in order of weight: a bold name and one sentence each. These are the reasons the user is there at all, independent of how the product serves them; every `job` in a module serves one of them. A line that runs under all the others, such as knowing what wants them, goes after the list.
 - `## Values`: a numbered list. Each value is a bold name, one or two sentences in the user's situation, and `Test:` a question to ask of a change, answerable yes or no. When two values conflict, the earlier one wins.
 - `## Non-goals`: things a reasonable designer would add and this product does not want.
 
-A value must decide between designs; a value no design would violate is a cut.
+A value must decide between designs; a value no design would violate is a cut. The Day is what a design choice is measured against: a choice that serves the first line counts for more than one that serves the last.
 
 ## The language rule
 
