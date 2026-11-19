@@ -20,7 +20,7 @@ A module starts with `# <module>` and a sentence or two on what the area is for.
 
 Declarations and their labels:
 
-- `concept <Name>`: one thing the user knows by name. `purpose:` one sentence of benefit to the user. `principle:` a short scenario that shows the purpose being met. `sees:` what the user can see of it, and where. `does:` a list of actions, one per line, as `<action> <key or gesture>: what happens`; the key is optional.
+- `concept <Name>`: one thing the user knows by name. `purpose:` one sentence of benefit to the user. `principle:` a short scenario that shows the purpose being met. `sees:` what the user can see of it, in priority order: the first items are what a list row shows, the rest need the thing open. `has:` the concepts nested in it, one per line, each marked `one` or `many`, optional. `does:` a list of actions, one per line, as `<action> <key or gesture>: what happens`; the key is optional.
 - `job <Title>`: one reason the user comes. `when:` the situation. `want:` what they want to do. `so that:` the outcome. `flow:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional.
 - `screen <Name>`: what the user sees at once. `shows:` the concepts on it. `starts:` the jobs that begin there.
 - `rule <name>`: how two or more concepts act together, in one `when ... then ...` sentence. A rule is where one action in one concept has an effect in another.
@@ -40,6 +40,9 @@ The deal hands the user the one thing that wants them most.
 purpose: hand the user the one thing that wants them most, so they never scan a list.
 principle: when something asks for the user it becomes a `Card`; `Card.deal` shows the top one; a verdict puts it away and deals the next.
 sees: who wants them, why, and since when; the thing itself underneath; the deck count beside the clock.
+has:
+- one `chat.Source`
+- one `chat.Thread`, when the card came from chat
 does:
 - deal `space`: show the top card
 - done `d`: put the card away for good
