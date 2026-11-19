@@ -14,12 +14,13 @@ Consulting this skill does not mean a module should be created or changed. Ordin
 
 ## Modules
 
-The model lives in a `product/` directory inside the directory that holds the product: the project root, or a package root when a repository ships several products. `product/product.md` describes the user and the values. Every other file is a module: one area of the product, named as the user would name it, such as `deal.md`, `chat.md`, or `notes.md`. A module holds the concepts, jobs, screens, and rules of its area together, so a reader opens one file to understand one area. There is no index; `rg '^## (concept|job|screen|rule) '` lists every declaration.
+The model lives in a `product/` directory inside the directory that holds the product: the project root, or a package root when a repository ships several products. `product/product.md` describes the user and the values. Every other file is a module: one area of the product, named as the user would name it, such as `deal.md`, `chat.md`, or `notes.md`. A module holds the concepts, jobs, screens, and rules of its area together, so a reader opens one file to understand one area. There is no index; `rg '^## (bet|concept|job|screen|rule) '` lists every declaration.
 
-A module starts with `# <module>` and a sentence or two on what the area is for. After that, each `##` heading is a declaration: `## concept Card`, `## job Clear what waits`, `## screen Home`, `## rule <short name>`. A declaration's body is labeled lines, `label: text`, and lists under a label. Lines not covered by a label are prose and are allowed anywhere.
+A module starts with `# <module>` and a sentence or two on what the area is for. After that, each `##` heading is a declaration: `## bet Chat is the medium`, `## concept Card`, `## job Clear what waits`, `## screen Home`, `## rule <short name>`. Bets come first, because they are the first how. A declaration's body is labeled lines, `label: text`, and lists under a label. Lines not covered by a label are prose and are allowed anywhere.
 
 Declarations and their labels:
 
+- `bet <Name>`: one large design choice of this area that could have gone another way, named as a sentence. `instead of:` the alternative it rejects, in one line. `serves:` the line of the Day it serves, by its bold name. `because:` why this way, in the user's situation, one or two sentences. `costs:` what the user pays for it, in one line. A bet lives in the module whose concepts it shapes most; a bet that shapes the whole window lives in the window's module.
 - `concept <Name>`: one thing the user knows by name. `purpose:` one sentence of benefit to the user. `principle:` a short scenario that shows the purpose being met. `sees:` what the user can see of it, in priority order: the first items are what a list row shows, the rest need the thing open. `has:` the concepts nested in it, one per line, each marked `one` or `many`, optional. `does:` a list of actions, one per line, as `<action> <key or gesture>: what happens`; the key is optional.
 - `job <Title>`: one reason the user comes. `day:` the line of `product.md`'s Day it serves, by its bold name. `when:` the situation. `want:` what they want to do. `so that:` the outcome. `flow:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional.
 - `screen <Name>`: what the user sees at once. `shows:` the concepts on it. `starts:` the jobs that begin there.
@@ -27,7 +28,7 @@ Declarations and their labels:
 
 Any declaration may carry `status:` right after its heading: what the built product does instead, when the product owner has agreed to a design that is not built yet.
 
-A reference to a declaration or an action is a backtick token: `` `Card` `` inside its own module, `` `deal.Card` `` from another module, `` `Card.done` `` for an action. Tokens are the only way to name another declaration; prose that mentions a concept uses its token.
+A reference to a declaration or an action is a backtick token: `` `Card` `` inside its own module, `` `deal.Card` `` from another module, `` `Card.done` `` for an action, `` `chat.Chat is the medium` `` for a bet. Tokens are the only way to name another declaration; prose that mentions a concept uses its token.
 
 ### Example
 
@@ -35,6 +36,12 @@ A reference to a declaration or an action is a backtick token: `` `Card` `` insi
 # deal
 
 The deal hands the user the one thing that wants them most.
+
+## bet The deal, not an inbox
+instead of: a list of unread things the user scans and marks read.
+serves: Know what wants them.
+because: the user has a minute between places and no memory of what asked; a list makes them choose, a card makes them answer.
+costs: a thing the user has not answered yet is hidden behind the top card.
 
 ## concept Card
 purpose: hand the user the one thing that wants them most, so they never scan a list.
@@ -114,14 +121,14 @@ step | sees                   | must know or recall  | does  | then             
 
 4. Mark each row `observed` when you drove or saw it, `inferred` when you read code or reasoned.
 5. Read the findings off the table. A finding is a row where the user must recall what the screen could show, where `then` is empty or unclear, where `system could` is not empty, or where the step count exceeds the flow in the module.
-6. Ask each value's test from `product.md` against what you saw.
-7. State each finding as the job, the step, what the user sees, what it costs them, and which value, concept, or rule it goes against. Rank findings by how often the job runs times what the step costs.
+6. Ask each value's test from `product.md` against what you saw, and ask whether each step honours the bets of its area.
+7. State each finding as the job, the step, what the user sees, what it costs them, and which value, bet, concept, or rule it goes against. Rank findings by how often the job runs times what the step costs.
 
 A finding that would fit any product is not a finding about this one; anchor it to a step. Findings are review output: they go in the conversation or the issue, not in a module.
 
 ### Proposing a change
 
-Show the screen after the change as text, in the model's vocabulary, before any code. Say which job gets cheaper and by how many steps, and which value the change serves. A change that adds a noun the user will see adds or changes a `concept`. A change that adds a way to get something done changes a `job` flow. A change that makes one concept affect another adds a `rule`. A change that adds a setting needs a reason the system cannot decide the value itself.
+Show the screen after the change as text, in the model's vocabulary, before any code. Say which job gets cheaper and by how many steps, and which value the change serves. A change that adds a noun the user will see adds or changes a `concept`. A change that adds a way to get something done changes a `job` flow. A change that makes one concept affect another adds a `rule`. A change that takes a different large choice changes a `bet`, and says what the rejected alternative was. A change that adds a setting needs a reason the system cannot decide the value itself.
 
 ## Modules and the built product
 
