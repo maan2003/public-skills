@@ -25,13 +25,14 @@ A reference is the product that does one part's job best, not the product that i
 
 - Name the job in one line, without naming the part.
 - Name the product of the claimed kind that does that job best. When no product of the claimed kind does the job, name the best product of any kind and say so; the claim then asks how that job would look done in the claimed kind.
-- Get a capture of the reference in the same state: run it (terminal programs in `tmux` with `capture-pane`, native programs in the project's headless compositor, web products in the browser automation the project uses), or fetch a screenshot when the reference cannot be run. Save it under the review's own directory, named by the part, never under `product/`.
+- Get a picture of the reference in the same state, as an image, never as a text dump: run it (native programs in the project's headless compositor, terminal programs in a terminal inside that compositor, web products in the browser automation the project uses) and take a screenshot, or fetch a screenshot when the reference cannot be run. The rule of sources from `product-form` applies to references too. Save it under the review's own directory, named by the part, never under `product/`.
+- The best product for a job is often not a terminal program. A reviewer who only runs what the shell can run has picked references by convenience, and says so if it cannot be helped.
 
 The list of parts and their references goes in the report, so the next review starts from it and a reference changes only with a reason.
 
 ### 3. Side by side
 
-For every part, with the product's capture and the reference's capture both in view, record the same facts of each: where the text lives; what is drawn around it; the modes available there; the keys; what the cursor and a selection can do there; how one enters and leaves; what undo covers. Every difference from the reference is a finding unless a `bet` or `rule` in the model names that difference on purpose, and then the record cites the bet. A part not compared is a miss and is listed as one.
+For every part, with the product's capture and the reference's picture both in view, record the same facts of each: where the text lives; what is drawn around it; the modes available there; the keys; what the cursor and a selection can do there; how one enters and leaves; what undo covers. Every difference from the reference is a finding unless a `bet` or `rule` in the model names that difference on purpose, and then the record cites the bet. A part not compared is a miss and is listed as one.
 
 ### 4. The flows, with hands
 
