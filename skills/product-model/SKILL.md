@@ -31,7 +31,9 @@ Declarations and their labels:
 - `screen <Name>`: a place the user recognises on arrival. `answers:` the one question the user can answer one second after it opens; a screen whose question is hard to write is unclear. `shows:` what is on it, in priority order, each item naming the concept it comes from; the first items are what the user needs first, and layout follows this order. `states:` the states the screen is designed in, `empty`, `loading`, `partial`, `error`, and `full`, one line each with the words the screen shows then; a state the screen cannot be in says so. `keys:` the keys that work here, most used first, each with what it does in a few words; a key that is the window's names the window's concept rather than restating it. `starts:` the flows that begin there. `mock:` a fenced text drawing of the full state, at the width of the laptop, with real words in the model's vocabulary; where the product is text the mock is exact, not a sketch; a second mock when the phone differs. The mock and the states are what a walk compares the built screen against.
 - `rule <name>`: how two or more concepts act together, in one `when ... then ...` sentence. A rule is where one action in one concept has an effect in another.
 
-Any declaration may carry `status:` right after its heading: what the built product does instead, when the product owner has agreed to a design that is not built yet.
+Any declaration may carry `status:` right after its heading: what the built product does instead, when the declaration describes a design that is not built yet.
+
+Any declaration may carry `rejected:`: the designs tried or proposed for it and dropped, one per line, each as the design, the date, and why it lost, in one line. The list is the product's memory of its own choices: a proposal that is on it says what has changed since, or is not made again.
 
 A journey or a flow may carry `reviewed:` as `<date> · <device> · <who> · <ok | n findings>`: when it was last walked on the built product, on which device, by whom, and how it did. A missing or old `reviewed:` is the first thing to walk, and a change that touches a flow or a journey needs a new walk before its `reviewed:` is current again.
 
@@ -161,9 +163,11 @@ How the product looks and moves, the design language in `product/design.md`, scr
 
 ## Modules and the built product
 
-A module describes the product as built. When the product owner has agreed to a design the product does not yet have, the declaration describes the agreed design and its `status:` line says what the built product does instead. Only a human product owner agrees to a design. An agent writes modules from the built product or from the owner's explicit decision, never from its own proposal; proposals stay in the conversation, the issue tracker, or the plan.
+A module describes the product as built, or the design chosen for it, with a `status:` line that says what the built product does instead.
 
-When code and a module disagree and neither is clearly right, escalate to the task requester instead of choosing. When a module blocks requested work, stop that work, describe the conflict in a few sentences, and say that resolving it needs the owner's decision. Do not turn the blockage into research or alternative designs unless asked.
+Everything in `product/` may change to find the better product, with one exception: the `user`, the `day`, the `value`s, and the `non-goal`s in `index.md` are the owner's. An agent proposes a change to those and the owner decides. For everything else an agent changes the module itself, in the same change as the product or ahead of it, when the walk shows a flow gets cheaper or a value is better served by the change. It records the choice it replaces under `rejected:` with the date and why it lost, and names the change and its reason in its report, so the owner can overturn it. A choice already on the `rejected:` list is not made again unless something has changed, and the change says what.
+
+When code and a module disagree, the one that costs the user less wins, and the other changes. When a module blocks requested work, the agent changes the module as part of the work under the rule above, and says so.
 
 ## Adopting the convention
 
