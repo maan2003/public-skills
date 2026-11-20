@@ -1,6 +1,6 @@
 ---
 name: product-model-bootstrapping
-description: Use when introducing the Product Model convention to an existing product and writing its first product/ directory (product.md and the modules) from the built product and its code, or when continuing a bootstrap that left areas thin.
+description: Use when introducing the Product Model convention to an existing product and writing its first product/ directory (index.md and the modules) from the built product and its code, or when continuing a bootstrap that left areas thin.
 user-invocable: true
 ---
 
@@ -21,13 +21,13 @@ The language rule applies to what you write, not to what you read. A sentence wr
 
 Survey without side effects on anything shared. Run the product with a fresh, private state directory. Send no message, start no session on a shared machine, and change nothing another person or agent can see. An area you cannot drive for that reason is read from code and listed in the report as read, not driven.
 
-## product.md
+## index.md
 
-Write the user section from what the product shows about its user and from the owner's words. Write the Day from the owner's words only, in the owner's order; when the owner has not given it, list what the built product's jobs serve, unordered, and ask the owner for the order in the report. Put the owner's values in the skill's form, one test each, and keep their meaning; rephrase, do not reinterpret. Add a value only when the built product clearly embodies it, place it after the owner's values, and name each added value in the report so the owner can veto it. Write non-goals only for things the product visibly refuses, such as a feature it has no place for.
+Write the `user` declaration from what the product shows about its user and from the owner's words. Write the `day` from the owner's words only, in the owner's order; when the owner has not given it, list what the built product's jobs serve, unordered, and ask the owner for the order in the report. Put the owner's values in the skill's form, as `value` declarations, one test each, and keep their meaning; rephrase, do not reinterpret. Add a value only when the built product clearly embodies it, place it after the owner's values, and name each added value in the report so the owner can veto it. Write non-goals only for things the product visibly refuses, such as a feature it has no place for.
 
 ## Modules
 
-Cut the product into areas as the user would name them, usually five to ten. Each area becomes one module. Write its concepts, jobs, screens, and rules from what you observed. Apply the qualification tests from `product-model`: a concept the user names or would need a word for, a job the user comes back to do, a screen the user recognises on arrival, a rule without which two concepts would disagree.
+Cut the product into areas as the user would name them, usually five to ten. Each area becomes one module. Write its concepts, flows, screens, and rules from what you observed, and the journeys from the owner's goals, each in the module where it starts. Apply the qualification tests from `product-model`: a concept the user names or would need a word for, a journey the user would state without naming a screen, a flow the user comes back to do on one screen, a screen the user recognises on arrival, a rule without which two concepts would disagree.
 
 The product has things the user never named: a dot in the corner, a bar of buttons, a menu that appears at the bottom. Invent a plain name, use it consistently, and list every invented name in the report for the owner to keep or change. Prefer a name from the product's own echo or help text when it has one.
 
@@ -37,7 +37,7 @@ Before you commit, search the modules for the code's vocabulary: every crate, pa
 
 ## Delegation
 
-When delegation is available, give each area to one agent with the same brief, and keep `product.md` and the cross-module tokens with one coordinator. The coordinator reconciles names used in more than one module, the rules that join areas, and duplicated concepts. Area agents report observations and questions; they do not decide names that cross modules.
+When delegation is available, give each area to one agent with the same brief, and keep `index.md`, the journeys, and the cross-module tokens with one coordinator. The coordinator reconciles names used in more than one module, the rules that join areas, and duplicated concepts. Area agents report observations and questions; they do not decide names that cross modules.
 
 ## Adoption and delivery
 
