@@ -133,6 +133,7 @@ A shape finding names what the screen makes the user do on every visit that the 
 
 1. Name the journey, then the flow. If no `flow` covers what the user is doing on this screen, that is the first finding: either a declaration is missing, or the screen serves no flow. If a step of the journey has no flow to point at, that is a finding about the product, not the model.
 2. Choose the situation. Walk each flow in four situations unless the flow says otherwise: first visit, routine return, return after an interruption, and the empty case. Walk each on every device the user has. Add the flow's `cases:`.
+   Every walk writes at least once: a reply, an idea, or a note, typed in full on the device, with the keys counted and the modes named. What the user pays when they write is a cost like any other and is not read off a picture.
 3. Walk the steps in the order of the user's actions, not in the order of the screen's parts. Fill one row per step:
 
 ```
