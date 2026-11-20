@@ -118,7 +118,18 @@ Read `index.md` before work that changes what the user sees or does, and in any 
 
 ### The walk
 
-The walk judges the product by running a journey, and the flows under it, against the built product, as the user. It is a cognitive walkthrough: at each step, does the user know what to do, do they see how, and do they understand what happened.
+The walk judges the product as the user, from the flows with the highest `runs:` down. It has two levels, and reports them in this order. The shape level asks whether a screen is the right thing for the flows that land on it. The surface level asks whether each step of a flow is clear and cheap. Surface findings on a screen whose shape is wrong are wasted, so shape comes first, and a walk that reports only surface findings on a screen a top flow lands on is not done.
+
+**Shape.** For each screen a walked flow lands on, write four lines before any step:
+
+- what the user does here, as the flows that land on it with their `runs:`, heaviest first
+- what the screen is for, in one sentence, read from the heaviest flow: what the user needs in view in the first second, and what they need at hand
+- the shape it has, in one sentence, and two other shapes it could have, such as a log, a page with the open item first, a list, a form, one item at a time
+- the judgment: whether the shape serves the heaviest flow, what the user pays per visit when it does not, in seconds, keys, or things held in the head, and which other shape would cost less
+
+A shape finding names what the screen makes the user do on every visit that the flow does not need: scroll, search, hold a state in the head, read what they have already dealt with, look in two places for one thing. The judgment "the shape holds" is a result too, and is written down.
+
+**Surface.** It is a cognitive walkthrough: at each step, does the user know what to do, do they see how, and do they understand what happened.
 
 1. Name the journey, then the flow. If no `flow` covers what the user is doing on this screen, that is the first finding: either a declaration is missing, or the screen serves no flow. If a step of the journey has no flow to point at, that is a finding about the product, not the model.
 2. Choose the situation. Walk each flow in four situations unless the flow says otherwise: first visit, routine return, return after an interruption, and the empty case. Walk each on every device the user has. Add the flow's `cases:`.
@@ -133,12 +144,11 @@ step | sees                   | must know or recall  | does  | then             
 ```
 
 4. Mark each row `observed` when you drove or saw it, `inferred` when you read code or reasoned.
-5. Read the findings off the table. A finding is a row where the user must recall what the screen could show, where `then` is empty or unclear, where `system could` is not empty, where the step count exceeds the steps in the module, or where the built screen differs from its `mock:` or from the words its `states:` promise.
-6. Ask each value's test from `index.md` against what you saw, and ask whether each step honours the bets of its area.
-7. State each finding as the journey, the flow, the step, what the user sees, what it costs them, and which value, bet, concept, or rule it goes against. Rank findings by how often the flow runs times what the step costs.
-8. When the walk is done, the owner or the lead sets `reviewed:` on the journey and each flow walked, with the date, the device, who walked, and the count of findings.
+5. Under the table, write the fewest steps the flow could take, and compare with the steps it took. The difference is the flow's cost, and a finding when it is more than one step.
+6. Read the findings off the table. A finding is a row where the user must recall what the screen could show, where `then` is empty or unclear, where `system could` is not empty, where the step count exceeds the steps in the module, or where the built screen differs from its `mock:` or from the words its `states:` promise.
+7. Ask each value's test from `index.md` against what you saw, and ask whether each step honours the bets of its area.
 
-A finding that would fit any product is not a finding about this one; anchor it to a step. Findings are review output: they go in the conversation or the issue, not in a module.
+**The report.** State each finding as the journey, the flow, the step, what the user sees, what it costs them, and which value, bet, concept, or rule it goes against. Rank findings by `runs:` times what the step costs. Shape findings come first, then the flows' costs, then the surface findings; a broken word, key, or state is a surface finding and goes last, however easy it is to fix. A finding that would fit any product is not a finding about this one; anchor it to a step. Findings are review output: they go in the conversation or the issue, not in a module. When the walk is done, the owner or the lead sets `reviewed:` on the journey and each flow walked, with the date, the device, who walked, and the count of findings.
 
 ### Proposing a change
 
