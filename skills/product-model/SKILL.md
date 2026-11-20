@@ -28,7 +28,7 @@ Declarations and their labels:
 - `journey <Name>`: one goal of the user, from trigger to done, across screens and areas, written in the third person: the user does this, then that. `goal:` one sentence. `starts when:` the trigger. `steps:` a numbered list, one thing the user does or sees per step, each pointing at the flow that serves it by token, with branches as indented lists. `done when:` what the user can see that says the goal is met. `day:` the line it serves. `reviewed:` see below. A journey lives in the module where it starts and reaches the rest by tokens. The journeys are the product; a walk starts from one.
 - `flow <Name>`: one reason the user is on one screen, written in the third person like everything else. `day:` the line it serves. `when:` the situation. `want:` what the user wants to do. `so that:` the outcome. `steps:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional. `reviewed:` see below.
 - `concept <Name>`: one thing the user knows by name. `purpose:` one sentence of benefit to the user. `principle:` a short scenario that shows the purpose being met. `sees:` what the user can see of it, in priority order: the first items are what a list row shows, the rest need the thing open. `has:` the concepts nested in it, one per line, each marked `one` or `many`, optional. `does:` a list of actions, one per line, as `<action> <key or gesture>: what happens`; the key is optional.
-- `screen <Name>`: what the user sees at once. `shows:` the concepts on it. `starts:` the flows that begin there.
+- `screen <Name>`: a place the user recognises on arrival. `answers:` the one question the user can answer one second after it opens; a screen whose question is hard to write is unclear. `shows:` what is on it, in priority order, each item naming the concept it comes from; the first items are what the user needs first, and layout follows this order. `states:` the states the screen is designed in, `empty`, `loading`, `partial`, `error`, and `full`, one line each with the words the screen shows then; a state the screen cannot be in says so. `keys:` the keys that work here, most used first, each with what it does in a few words; a key that is the window's names the window's concept rather than restating it. `starts:` the flows that begin there. `mock:` a fenced text drawing of the full state, at the width of the laptop, with real words in the model's vocabulary; where the product is text the mock is exact, not a sketch; a second mock when the phone differs. The mock and the states are what a walk compares the built screen against.
 - `rule <name>`: how two or more concepts act together, in one `when ... then ...` sentence. A rule is where one action in one concept has an effect in another.
 
 Any declaration may carry `status:` right after its heading: what the built product does instead, when the product owner has agreed to a design that is not built yet.
@@ -100,7 +100,7 @@ when `Card.done` on a card that came from a `chat.Thread`, then that thread coun
 
 ### What qualifies
 
-A concept must be something the user names, or would need a word for. A journey must be a goal the user would state without naming a screen; five to eight per product is usual. A flow must be something the user comes back to do on one screen; a one-time setup is a flow only when its cost matters. A screen is a place the user recognises on arrival, not every state of one. A rule earns its place when forgetting it would make two concepts disagree. There is no target length and no completeness goal; a module with one concept and one flow is normal.
+A concept must be something the user names, or would need a word for. A journey must be a goal the user would state without naming a screen; five to eight per product is usual. A flow must be something the user comes back to do on one screen; a one-time setup is a flow only when its cost matters. A screen is a place the user recognises on arrival, not every state of one; the states of one screen go under its `states:`. A rule earns its place when forgetting it would make two concepts disagree. There is no target length and no completeness goal; a module with one concept and one flow is normal.
 
 ## index.md
 
@@ -133,7 +133,7 @@ step | sees                   | must know or recall  | does  | then             
 ```
 
 4. Mark each row `observed` when you drove or saw it, `inferred` when you read code or reasoned.
-5. Read the findings off the table. A finding is a row where the user must recall what the screen could show, where `then` is empty or unclear, where `system could` is not empty, or where the step count exceeds the steps in the module.
+5. Read the findings off the table. A finding is a row where the user must recall what the screen could show, where `then` is empty or unclear, where `system could` is not empty, where the step count exceeds the steps in the module, or where the built screen differs from its `mock:` or from the words its `states:` promise.
 6. Ask each value's test from `index.md` against what you saw, and ask whether each step honours the bets of its area.
 7. State each finding as the journey, the flow, the step, what the user sees, what it costs them, and which value, bet, concept, or rule it goes against. Rank findings by how often the flow runs times what the step costs.
 8. When the walk is done, the owner or the lead sets `reviewed:` on the journey and each flow walked, with the date, the device, who walked, and the count of findings.
@@ -142,7 +142,7 @@ A finding that would fit any product is not a finding about this one; anchor it 
 
 ### Proposing a change
 
-Show the screen after the change as text, in the model's vocabulary, before any code. Say which journey or flow gets cheaper and by how many steps, and which value the change serves. A change that adds a noun the user will see adds or changes a `concept`. A change that adds a way to get something done changes a `flow`. A change that makes one concept affect another adds a `rule`. A change that takes a different large choice changes a `bet`, and says what the rejected alternative was. A change that adds a setting needs a reason the system cannot decide the value itself.
+Show the screen after the change as its changed `mock:`, in the model's vocabulary, before any code. Say which journey or flow gets cheaper and by how many steps, and which value the change serves. A change that adds a noun the user will see adds or changes a `concept`. A change that adds a way to get something done changes a `flow`. A change that makes one concept affect another adds a `rule`. A change that takes a different large choice changes a `bet`, and says what the rejected alternative was. A change that adds a setting needs a reason the system cannot decide the value itself.
 
 ## Modules and the built product
 
