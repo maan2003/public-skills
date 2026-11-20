@@ -7,7 +7,7 @@ description: "The UI design layer of the Product Model: how a product looks and 
 
 The Product Model (the `product-model` skill) holds intent: who the user is, their day, values, bets, journeys, flows, concepts, screens, rules. This skill holds form: how that intent looks and moves. Intent is UX design, form is UI design. They differ in material, method, judge, and timing, so they are two skills over one model: form hangs its files off the model's declarations and adds no second vocabulary.
 
-Form is judged after intent. A form finding on a screen whose shape fails its heaviest flow is wasted, so a review runs the model's walk first and the critique below second, and reports in that order.
+Form is judged after intent. A form finding on a screen whose shape fails its heaviest flow is wasted, so a review runs the model's walk first and the critique below second, and reports in that order. The review that runs the walk, the comparison against references, and the critique together is the `product-review` skill.
 
 ## The rule of sources
 
