@@ -25,7 +25,7 @@ Declarations and their labels:
 - `value <Name>`: one or two sentences in the user's situation, and `test:` a question to ask of a change, answerable yes or no. Values are numbered in `index.md`; when two values conflict, the earlier one wins, and a value declared in an area module ranks after every value in `index.md`. A value must decide between designs; a value no design would violate is a cut.
 - `non-goal <Name>`: a thing a reasonable designer would add and this product does not want, with one sentence on what it does instead.
 - `bet <Name>`: one large design choice, named as a sentence, that passes three tests: it shapes more than one area, `index.md` does not already say it as a value, a non-goal, or part of the user, and it could have gone another way under the same values. A decision inside one flow or one screen is not a bet; it is a step or a sentence there. `instead of:` the alternative it rejects, in one line. `serves:` the line of the day it serves, by its bold name. `because:` why this way, in the user's situation, one or two sentences. `costs:` what the user pays for it, in one line. A bet lives in the module whose concepts it shapes most.
-- `journey <Name>`: one goal of the user, from trigger to done, across screens and areas, named as the user would tell it. `goal:` one sentence. `starts when:` the trigger. `steps:` a numbered list as the user tells them, each pointing at the flow that serves it by token, with branches as indented lists. `done when:` what the user can see that says the goal is met. `day:` the line it serves. `reviewed:` see below. A journey lives in the module where it starts and reaches the rest by tokens. The journeys are the product; a walk starts from one.
+- `journey <Name>`: one goal of the user, from trigger to done, across screens and areas, written in the third person: the user does this, then that. `goal:` one sentence. `starts when:` the trigger. `steps:` a numbered list, one thing the user does or sees per step, each pointing at the flow that serves it by token, with branches as indented lists. `done when:` what the user can see that says the goal is met. `day:` the line it serves. `reviewed:` see below. A journey lives in the module where it starts and reaches the rest by tokens. The journeys are the product; a walk starts from one.
 - `flow <Name>`: one reason the user is on one screen. `day:` the line it serves. `when:` the situation. `want:` what they want to do. `so that:` the outcome. `steps:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional. `reviewed:` see below.
 - `concept <Name>`: one thing the user knows by name. `purpose:` one sentence of benefit to the user. `principle:` a short scenario that shows the purpose being met. `sees:` what the user can see of it, in priority order: the first items are what a list row shows, the rest need the thing open. `has:` the concepts nested in it, one per line, each marked `one` or `many`, optional. `does:` a list of actions, one per line, as `<action> <key or gesture>: what happens`; the key is optional.
 - `screen <Name>`: what the user sees at once. `shows:` the concepts on it. `starts:` the flows that begin there.
@@ -51,13 +51,13 @@ because: the user has a minute between places and no memory of what asked; a lis
 costs: a thing the user has not answered yet is hidden behind the top card.
 
 ## journey Back from an hour elsewhere
-goal: know what wanted me while I was away, answer it, and be back where I was.
-starts when: I look up from a long piece of work.
+goal: the user knows what wanted them while they were away, answers it, and is back where they were.
+starts when: the user looks up from a long piece of work.
 steps:
-1. I see the lamp, or press `tab`; Home says who wants me and how much, `home.Glance at what waits`
-2. I deal and answer each card, `Clear what waits`
-3. I go back to the place I was, as I left it, `window.Screen.back`
-done when: the deal is empty and my place is on screen with the cursor where it was.
+1. the user sees the lamp, or presses `tab`; Home says who wants them and how much, `home.Glance at what waits`
+2. the user deals and answers each card, `Clear what waits`
+3. the user goes back to the place they were, as they left it, `window.Screen.back`
+done when: the deal is empty and the user's place is on screen with the cursor where it was.
 day: Know what wants them.
 reviewed: 2026-11-20 · laptop · reviewer · 2 findings
 
