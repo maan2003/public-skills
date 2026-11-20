@@ -154,6 +154,10 @@ step | sees                   | must know or recall  | does  | then             
 
 Show the screen after the change as its changed `mock:`, in the model's vocabulary, before any code. Say which journey or flow gets cheaper and by how many steps, and which value the change serves. A change that adds a noun the user will see adds or changes a `concept`. A change that adds a way to get something done changes a `flow`. A change that makes one concept affect another adds a `rule`. A change that takes a different large choice changes a `bet`, and says what the rejected alternative was. A change that adds a setting needs a reason the system cannot decide the value itself.
 
+## Form
+
+How the product looks and moves, the design language in `product/design.md`, screen forms, storyboards, and the visual critique, is the `product-form` skill. It is loaded after this one and only when the work touches appearance. A review runs the walk first and the critique second.
+
 ## Modules and the built product
 
 A module describes the product as built. When the product owner has agreed to a design the product does not yet have, the declaration describes the agreed design and its `status:` line says what the built product does instead. Only a human product owner agrees to a design. An agent writes modules from the built product or from the owner's explicit decision, never from its own proposal; proposals stay in the conversation, the issue tracker, or the plan.
