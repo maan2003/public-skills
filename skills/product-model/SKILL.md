@@ -26,7 +26,7 @@ Declarations and their labels:
 - `non-goal <Name>`: a thing a reasonable designer would add and this product does not want, with one sentence on what it does instead.
 - `bet <Name>`: one large design choice, named as a sentence, that passes three tests: it shapes more than one area, `index.md` does not already say it as a value, a non-goal, or part of the user, and it could have gone another way under the same values. A decision inside one flow or one screen is not a bet; it is a step or a sentence there. `instead of:` the alternative it rejects, in one line. `serves:` the line of the day it serves, by its bold name. `because:` why this way, in the user's situation, one or two sentences. `costs:` what the user pays for it, in one line. A bet lives in the module whose concepts it shapes most.
 - `journey <Name>`: one goal of the user, from trigger to done, across screens and areas, written in the third person: the user does this, then that. `goal:` one sentence. `starts when:` the trigger. `steps:` a numbered list, one thing the user does or sees per step, each pointing at the flow that serves it by token, with branches as indented lists. `done when:` what the user can see that says the goal is met. `day:` the line it serves. `reviewed:` see below. A journey lives in the module where it starts and reaches the rest by tokens. The journeys are the product; a walk starts from one.
-- `flow <Name>`: one reason the user is on one screen. `day:` the line it serves. `when:` the situation. `want:` what they want to do. `so that:` the outcome. `steps:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional. `reviewed:` see below.
+- `flow <Name>`: one reason the user is on one screen, written in the third person like everything else. `day:` the line it serves. `when:` the situation. `want:` what the user wants to do. `so that:` the outcome. `steps:` a numbered list, one user action per step, from arriving to done; branches as indented lists under the step they leave. `system:` what the system does without being asked. `user:` what only the user supplies. `cases:` situations worth walking beyond the defaults, optional. `reviewed:` see below.
 - `concept <Name>`: one thing the user knows by name. `purpose:` one sentence of benefit to the user. `principle:` a short scenario that shows the purpose being met. `sees:` what the user can see of it, in priority order: the first items are what a list row shows, the rest need the thing open. `has:` the concepts nested in it, one per line, each marked `one` or `many`, optional. `does:` a list of actions, one per line, as `<action> <key or gesture>: what happens`; the key is optional.
 - `screen <Name>`: what the user sees at once. `shows:` the concepts on it. `starts:` the flows that begin there.
 - `rule <name>`: how two or more concepts act together, in one `when ... then ...` sentence. A rule is where one action in one concept has an effect in another.
@@ -77,12 +77,12 @@ does:
 
 ## flow Clear what waits
 day: Know what wants them.
-when: I have a free minute
-want: see everything that asks for me and answer each
-so that: nothing waits on me without my knowing
+when: the user has a free minute
+want: see everything that asks for them and answer each
+so that: nothing waits on them without their knowing
 steps:
-1. open the product; the top `Card` is on screen
-2. read the card
+1. the user opens the product; the top `Card` is on screen
+2. the user reads the card
 3. `Card.done`, or `Card.later` and a time, or `Card.never`
 4. the next card is on screen; repeat from 2
 system: reads every source, orders the cards, drops a card whose asker has stopped waiting.
@@ -110,7 +110,7 @@ The module about the whole product. It holds the `user`, the `day`, the numbered
 
 A module names only what the user can see, do, or know. It names no function, type, module of code, table, file, crate, flag, or API. The test: a person who uses the product and has never seen its code understands every sentence and could check it against the running product. A sentence that fails the test is restated as what the user observes, or moved to code documentation.
 
-The rule also governs how you talk about the product while this skill is loaded. State a finding or a proposal in the model's vocabulary first: the journey, the flow, the step, what the user sees, what it costs them. Code references, if any, come after, in a separate part. A finding that cannot be stated without naming code is not yet a product finding.
+Every declaration is written in the third person: the user, they, their. The rule also governs how you talk about the product while this skill is loaded. State a finding or a proposal in the model's vocabulary first: the journey, the flow, the step, what the user sees, what it costs them. Code references, if any, come after, in a separate part. A finding that cannot be stated without naming code is not yet a product finding.
 
 ## Using the model
 
