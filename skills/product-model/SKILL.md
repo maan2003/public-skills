@@ -157,7 +157,7 @@ Show the screen after the change as its changed `mock:`, in the model's vocabula
 
 ## Form
 
-How the product looks and moves, the design language in `product/design.md`, screen forms, storyboards, and the visual critique, is the `product-form` skill. It is loaded after this one and only when the work touches appearance. A review runs the walk first and the critique second.
+How the product looks and moves, the design language in `product/design.md`, screen forms, storyboards, and the visual critique, is the `product-form` skill. It is loaded after this one and only when the work touches appearance. A review runs the walk first and the critique second; the `product-review` skill is the full review, with a reference per part and the flows done with hands.
 
 ## Modules and the built product
 
